@@ -6,6 +6,9 @@ import bcrypt from "bcrypt";
 
 export const options = {
   providers: [
+
+    // for gitHub users, return profile, and user role 
+  
     GitHubProvider({
       profile(profile) {
         console.log("Profile GitHub: ", profile);
@@ -23,6 +26,8 @@ export const options = {
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_Secret,
     }),
+
+    // for gitHub users, return profile, and user role 
     GoogleProvider({
       profile(profile) {
         console.log("Profile Google: ", profile);
