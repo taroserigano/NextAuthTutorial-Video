@@ -88,6 +88,8 @@ export const options = {
 
   // when you call   const session = await getServerSession(options)
   // you can extract data you wanna get 
+  // in this case, this will return "token" and "session" 
+  
   callbacks: {
     async jwt({ token, user }) {
       if (user) token.role = user.role;
