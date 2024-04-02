@@ -5,6 +5,9 @@ import User from "@/app/(models)/User";
 import bcrypt from "bcrypt";
 
 export const options = {
+
+  
+  // you can get user's information through providers below (depends on how you login) 
   providers: [
     GitHubProvider({
       profile(profile) {
@@ -37,6 +40,8 @@ export const options = {
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_Secret,
     }),
+
+    // this will also come with authenticate methods 
     CredentialsProvider({
       name: "Credentials",
       credentials: {
@@ -79,6 +84,10 @@ export const options = {
       },
     }),
   ],
+  // end of provider 
+
+  // when you call   const session = await getServerSession(options)
+  // you can extract data you wanna get 
   callbacks: {
     async jwt({ token, user }) {
       if (user) token.role = user.role;
