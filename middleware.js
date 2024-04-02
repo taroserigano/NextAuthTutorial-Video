@@ -6,6 +6,9 @@ export default withAuth(
     console.log(req.nextUrl.pathname);
     console.log(req.nextauth.token.role);
 
+    // at /CreateUser URL, 
+    // if this user is not admin, 
+    // redirect to /Denied page 
     if (
       req.nextUrl.pathname.startsWith("/CreateUser") &&
       req.nextauth.token.role != "admin"
@@ -13,6 +16,7 @@ export default withAuth(
       return NextResponse.rewrite(new URL("/Denied", req.url));
     }
   },
+  // return authorized : token (if token is not "null" (!!)) 
   {
     callbacks: {
       authorized: ({ token }) => !!token,
