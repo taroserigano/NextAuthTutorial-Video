@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 
 const Member = async () => {
 
-  // once Authenticated, redirect to the URL 
+  // if not Authenticated, redirect to the URL 
   const { data: session } = useSession({
     required: true,
     onUnauthenticated() {
