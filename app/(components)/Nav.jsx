@@ -3,6 +3,9 @@ import { getServerSession } from "next-auth";
 import { options } from "../api/auth/[...nextauth]/options";
 
 const Nav = async () => {
+
+  // this will check if any authentication is done or not
+  // if not, refirect to sign in, instead of log out 
   const session = await getServerSession(options);
   return (
     <header className="bg-gray-600 text-gray-100">
